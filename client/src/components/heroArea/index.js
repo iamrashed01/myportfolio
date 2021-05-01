@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "reactstrap";
 import authorImage from "../../images/eahea.jpg";
+import Menus from "../menus";
 
 const HeroArea = () => {
   return (
@@ -27,6 +28,7 @@ const HeroArea = () => {
           </div>
         </Col>
       </Row>
+      <Menus />
     </div>
   );
 };
