@@ -55,7 +55,7 @@ img {
         width: $authorImageContentWidth;
         z-index: 9;
         border-radius: 50%;
-        border: $cicleBorderWidth solid $circleBorderColor;
+        border: $cicleBorderWidth double $circleBorderColor;
         border-right-color: transparent;
         border-left-color: transparent;
         animation: rotatecontinues infinite 3s ease-in-out forwards;
@@ -84,8 +84,12 @@ img {
     }
     p {
       margin-top: 2rem;
-      font-size: 0.9rem;
+      font-size: 1rem;
       line-height: 1.4rem;
+      color: #e4d9d9;
+      font-weight: 100;
+      font-family: $fontScondary;
+      // letter-spacing: 0.1rem;
       animation: shadow 1s ease-in-out 0s forwards;
     }
   }
