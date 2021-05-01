@@ -2,6 +2,11 @@
 @import "./colors.scss";
 @import "./fonts";
 
+// local var
+$cicleBorderWidth: 8px;
+$circleBorderColor: rgba(255, 255, 255, 0.2);
+$authorImageContentWidth: calc(100% + 16px);
+
 body {
   margin: 0;
   font-family: $fontBasic, sans-serif;
@@ -34,14 +39,39 @@ img {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   .authorImageArea {
     .authorImage {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
       width: 250px;
       height: 250px;
       border-radius: 50%;
-      overflow: hidden;
+      position: relative;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: -$cicleBorderWidth;
+        top: -$cicleBorderWidth;
+        height: $authorImageContentWidth;
+        width: $authorImageContentWidth;
+        z-index: 9;
+        border-radius: 50%;
+        border: $cicleBorderWidth solid $circleBorderColor;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        animation: rotatecontinues infinite 3s ease-in-out forwards;
+      }
       img {
+        overflow: hidden;
+        animation: rotatey infinite 2s ease-in-out forwards;
         height: 100%;
         width: 100%;
+        border-radius: 50%;
         object-fit: cover;
+        filter: blur(0px);
+        transition: all 0.3s ease-in-out 0s;
+        &:hover {
+          filter: blur(3px);
+        }
       }
     }
   }
@@ -50,15 +80,13 @@ img {
       font-size: 4rem;
       text-transform: uppercase;
       text-shadow: 1px 8px 5px #fff;
-      animation: shadowdeep 12s infinite ease-in-out forwards;
+      animation: shadowdeep 12s linear 0s infinite;
     }
     p {
       margin-top: 2rem;
       font-size: 0.9rem;
       line-height: 1.4rem;
-      text-shadow: 1px 8px 5px #fff;
-      animation: shadow 8s infinite ease-in-out forwards;
-      animation-delay: 4s;
+      animation: shadow 1s ease-in-out 0s forwards;
     }
   }
 }
@@ -71,7 +99,7 @@ img {
     text-shadow: 20px 0 15px #fff;
   }
   50% {
-    text-shadow: -10px -10px 15px #fff;
+    text-shadow: -10px -10px 50px #fff;
   }
   90% {
     text-shadow: 10px 15px 15px #fff;
@@ -83,15 +111,33 @@ img {
 
 @keyframes shadow {
   0% {
-    text-shadow: 1px 8px 5px #fff;
-  }
-  25% {
-    text-shadow: 20px 0 15px #fff;
-  }
-  80% {
-    text-shadow: -4px 3px 15px #fff;
+    text-shadow: -4px 10px 10px #fff;
   }
   100% {
-    text-shadow: 1px 8px 5px #fff;
+    text-shadow: 0 0 0 #fff;
+  }
+}
+
+@keyframes rotatecontinues {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotatey {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
