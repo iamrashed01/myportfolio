@@ -13,25 +13,33 @@ const RecentPosts = () => {
         <Col xs="12">
           <Row>
             {[...Array(10)].map((row, i) => (
-              <Col xs="12" sm="6" md="6" className="mb-5">
-                <Card className="full-h">
-                  <CardBody>
-                    <div className="recetPost">
-                      <Link to="/project" />
-                      <div className="postTitle">
-                        <h2>
-                          <strong>{i + 1}</strong> React boilerplate setup
-                          instruction
-                        </h2>
-                        <span className="createTime">March 18, 2021</span>
-                      </div>
-                      <p>
-                        My experience and thoughts on 2020 web development
-                        technologies.
-                      </p>
-                    </div>
-                  </CardBody>
-                </Card>
+              <Col xs="12">
+                <Row>
+                  <Col
+                    xs="12"
+                    sm={i % 2 ? { size: 6, offset: 5 } : { size: 6, offset: 1 }}
+                    className="mb-5"
+                  >
+                    <Card className="full-h">
+                      <CardBody>
+                        <div className="recetPost">
+                          <Link to="/project" />
+                          <div className="postTitle">
+                            <h2>
+                              <strong>{i + 1}</strong> React boilerplate setup
+                              instruction
+                            </h2>
+                            <span className="createTime">March 18, 2021</span>
+                          </div>
+                          <p>
+                            My experience and thoughts on 2020 web development
+                            technologies.
+                          </p>
+                        </div>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                </Row>
               </Col>
             ))}
           </Row>
