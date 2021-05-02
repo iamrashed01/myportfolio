@@ -7,6 +7,8 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/project" component={HomePage} />
+          <Route exact path="/skill" component={HomePage} />
           <Route exact component={() => "page not found"} />
         </Switch>
       </Router>

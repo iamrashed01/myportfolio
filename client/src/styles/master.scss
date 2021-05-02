@@ -49,6 +49,7 @@ img {
   background-color: $heroBgColor;
   color: $heroTextColor;
   .authorImageArea {
+    display: flex;
     .authorImage {
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
       width: 250px;
@@ -202,11 +203,11 @@ img {
         content: "";
         position: absolute;
         left: 100%;
-        top: 60%;
+        top: 50%;
         transform: translateY(-50%);
         height: 1px;
         width: 50px;
-        transform: skewY(12deg);
+        // transform: skewY(12deg);
         border-top: 1px solid $menusBorderColor;
       }
       &:last-child::before {
@@ -222,16 +223,16 @@ img {
         color: $primaryTextColor;
         &.active {
           border-color: $grayColor;
-          background: $grayColor;
-          color: $primaryTextColor;
+          background: $themeColor;
+          color: $reverseColor;
         }
       }
     }
-    @for $i from 1 through 3 {
-      li:nth-child(#{$i + 1}) {
-        transform: translateY($i * 10px);
-      }
-    }
+    // @for $i from 1 through 3 {
+    //   li:nth-child(#{$i + 1}) {
+    //     transform: translateY($i * 10px);
+    //   }
+    // }
   }
 }
 
@@ -254,7 +255,7 @@ img {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease 0s;
   &:hover {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   }
 }
 

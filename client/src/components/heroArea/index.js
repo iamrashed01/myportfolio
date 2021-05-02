@@ -1,17 +1,32 @@
+import { motion } from "framer-motion";
 import { Col, Container, Row } from "reactstrap";
 import authorImage from "../../images/eahea.jpg";
 import Menus from "../menus";
+// import heroBg from "../../images/bg.jpg";
 
 const HeroArea = () => {
   return (
-    <div className="heroArea">
+    <div
+      className="heroArea"
+      // style={{ background: `url(${heroBg}) right /cover` }}
+    >
       <Container>
         <Row className="align-items-center">
           <Col xs="12" md="4">
             <div className="authorImageArea">
-              <div className="authorImage">
-                <img src={authorImage} alt="authorImage" />
-              </div>
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                }}
+              >
+                <div className="authorImage">
+                  <img src={authorImage} alt="authorImage" />
+                </div>
+              </motion.div>
             </div>
           </Col>
           <Col xs="12" md="8">

@@ -5,7 +5,9 @@ const Menus = () => {
     <div className="menusArea">
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink exact to="/">
+            Home
+          </NavLink>
         </li>
         <li>
           <NavLink to="/project">Project</NavLink>
