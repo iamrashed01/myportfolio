@@ -14,9 +14,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routes
-app.get("/", (req, res) => {
-  res.send("hello, i am Eahea Ratan , i am Full Stack developer");
-});
 app.use("/api/auth", require("./routes/auth"));
 
 app.use((req, res, next) => {
