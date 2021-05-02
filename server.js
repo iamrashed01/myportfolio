@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+require("express-async-errors");
 const morgan = require("morgan");
 require("dotenv").config();
 
@@ -7,13 +8,32 @@ require("dotenv").config();
 const app = express();
 
 // init midlleware
-app.use(cors);
+app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routes
-app.use("/", (req, res) => [res.send("welcome to app")]);
+app.get("/", (req, res) => {
+  res.send("hello, i am Eahea Ratan , i am Full Stack developer");
+});
+app.use("/api/auth", require("./routes/auth"));
+
+app.use((req, res, next) => {
+  res.json({ message: "Route not found", success: false });
+});
+
+app.use((err, req, res, next) => {
+  if (err.message === "access denied") {
+    return res.status(403).json({ message: err.message });
+  } else if (err.message) {
+    return res.status(403).json({ message: err.message });
+  } else {
+    return res.status(403).json({ message: "Something went wrong!" });
+  }
+
+  next(err);
+});
 
 // init server listener
 const port = process.env.PORT || 5000;
