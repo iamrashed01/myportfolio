@@ -14,6 +14,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  profession: String,
+  description: String,
+  image: String,
   email_verifcation_status: {
     type: Number,
     default: 0,

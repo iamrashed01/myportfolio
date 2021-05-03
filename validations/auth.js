@@ -1,0 +1,12 @@
+const Joi = require("joi");
+
+module.exports.registerValidator = (req) => {
+  const schema = Joi.object({
+    username: Joi.string().required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().required().min(6),
+    profession: Joi.string().required(),
+    description: Joi.string().required(),
+  });
+  return schema.validateAsync(req);
+};
