@@ -4,6 +4,7 @@ const User = require("../models/user");
 const upload = require("../utils/multer");
 const { registerValidator, loginValidator } = require("../validations/auth");
 const sendMail = require("../utils/sendMail");
+const auth = require("../middleware/auth");
 
 route.post("/register", upload.single("image"), async (req, res) => {
   await registerValidator(req.body);
@@ -88,6 +89,33 @@ route.get("/login", upload.none(), async (req, res) => {
     message: "User retrieved successfully",
     success: true,
   });
+});
+
+route.get("/verify-email", auth, async (req, res) => {
+  const user = await User.findOne({ email: req.user.email });
+  if (!user) {
+    return res.status(400).json({ message: "User not found", success: false });
+  }
+
+  const isValidCode = await bcrypt.compare(
+    req.body.code,
+    user.verification_code
+  );
+
+  if (!isValidCode) {
+    return res.status(400).json({
+      message: "invalid verification code!",
+      success: false,
+    });
+  }
+
+  user.verification_code = null;
+  user.email_verifcation_status = 1;
+  user.save();
+
+  return res
+    .status(200)
+    .json({ message: "successfully verified email.", success: true });
 });
 
 module.exports = route;
