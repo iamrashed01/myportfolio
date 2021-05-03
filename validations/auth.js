@@ -10,3 +10,11 @@ module.exports.registerValidator = (req) => {
   });
   return schema.validateAsync(req);
 };
+
+module.exports.loginValidator = (req) => {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required().min(6),
+  });
+  return schema.validateAsync(req);
+};

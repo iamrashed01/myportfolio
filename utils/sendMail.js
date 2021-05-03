@@ -7,7 +7,7 @@ const sendMail = (toEmail, code) => {
     from: process.env.FROM_EMAIL,
     subject: "Verification code",
     text: "verify your account using this code",
-    html: `verify your account using this code <strong>${code}</strong>`,
+    html: `<strong>verify your account using this code <i>${code}<i/></strong>`,
   };
   //ES6
   sgMail.send(msg).then(
