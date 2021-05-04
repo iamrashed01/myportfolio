@@ -1,28 +1,35 @@
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
+const userSchema = mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    profession: String,
+    description: String,
+    image: String,
+    email_verifcation_status: {
+      type: Number,
+      default: 0,
+    },
+    verification_code: String,
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
-  email: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  profession: String,
-  description: String,
-  image: String,
-  email_verifcation_status: {
-    type: Number,
-    default: 0,
-  },
-  verification_code: String,
-});
+  { timestamps: true }
+);
 
 userSchema.methods.generateAuthToken = function () {
   const payload = {

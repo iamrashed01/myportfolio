@@ -4,8 +4,8 @@ const User = require("../models/user");
 const upload = require("../utils/multer");
 const { updateProfileValidator } = require("../validations/user");
 
-route.get("/profile", auth, async (req, res) => {
-  const user = await User.findById(req.user.id).select(
+route.get("/", async (req, res) => {
+  const user = await User.findOne({ isAdmin: true }).select(
     "-password -_id -__v -verification_code"
   );
   res
@@ -13,7 +13,7 @@ route.get("/profile", auth, async (req, res) => {
     .json({ data: user, message: "user profile retrieved successfully" });
 });
 
-route.put("/profile", auth, upload.single("image"), async (req, res) => {
+route.put("/", auth, upload.single("image"), async (req, res) => {
   await updateProfileValidator(req.body);
 
   const user = await User.findById(req.user.id).select(

@@ -34,6 +34,7 @@ route.post("/register", upload.single("image"), async (req, res) => {
 
   return res.status(200).json({
     data: {
+      isAdmin: user.isAdmin,
       username: user.username,
       email: user.email,
       profession: user.profession,
@@ -79,6 +80,7 @@ route.get("/login", upload.none(), async (req, res) => {
 
   res.status(200).json({
     data: {
+      isAdmin: user.isAdmin,
       username: user.username,
       profession: user.profession,
       email: user.email,
