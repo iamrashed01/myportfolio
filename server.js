@@ -17,7 +17,8 @@ app.use("/uploads", express.static("uploads"));
 
 // routes
 app.use("/api/auth", require("./routes/auth"));
-app.use("/api", require("./routes/user"));
+app.use("/api/profile", require("./routes/user"));
+app.use("/api/project", require("./routes/project"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
