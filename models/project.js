@@ -11,6 +11,7 @@ const Project = mongoose.model(
       slug: {
         type: String,
         required: true,
+        uniq: true,
       },
       description: {
         type: String,
