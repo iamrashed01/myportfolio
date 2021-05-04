@@ -12,6 +12,18 @@ route.get("/", async (req, res) => {
     .json({ data: projects, message: "successfully retrieved projects" });
 });
 
+route.get("/:slug", async (req, res) => {
+  const project = await Project.findOne({ slug: req.params.slug });
+  if (!project) {
+    return res
+      .status(400)
+      .json({ message: "Project could not found", success: false });
+  }
+  res
+    .status(200)
+    .json({ data: project, message: "successfully retrieved project details" });
+});
+
 route.post("/", auth, async (req, res) => {
   await projectValidator(req.body);
 
