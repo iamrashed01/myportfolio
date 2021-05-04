@@ -4,7 +4,10 @@ import authorImage from "../../images/eahea.jpg";
 import Menus from "../menus";
 // import heroBg from "../../images/bg.jpg";
 
-const HeroArea = () => {
+const HeroArea = ({ heroInfo }) => {
+  const username = heroInfo ? heroInfo.username : "";
+  const profession = heroInfo ? heroInfo.profession : "";
+  const description = heroInfo ? heroInfo.description : "";
   return (
     <div
       className="heroArea"
@@ -32,15 +35,10 @@ const HeroArea = () => {
           <Col xs="12" md="8">
             <div className="heroContent">
               <h2>
-                hello, <br /> i am eahea ratan
+                hello, <br /> i am {username}
               </h2>
-              <h2>a full stack developer</h2>
-              <p>
-                I am an expert Full Stack Developer, I have been working since
-                2016 I worked on five different software companies. My expertise
-                in HTML, CSS, js, ReactJS, Nextjs, Vuejs, Nuxtjs, Nodejs and
-                many more.
-              </p>
+              <h2>a {profession}</h2>
+              <p>{description}</p>
             </div>
           </Col>
         </Row>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 
-const RecentPosts = () => {
+const RecentPosts = ({ recentProjects }) => {
   return (
     <Container className="mb-5">
       <Row>
@@ -12,23 +12,19 @@ const RecentPosts = () => {
         </Col>
         <Col xs="12" sm={{ size: 8, offset: 2 }}>
           <Row>
-            {[...Array(10)].map((row, i) => (
-              <Col xs="12" sm={6} className="mb-5">
+            {recentProjects.map((project, i) => (
+              <Col key={i} xs="12" sm={6} className="mb-5">
                 <Card className="full-h">
                   <CardBody>
                     <div className="recetPost">
-                      <Link to="/project" />
+                      <Link to={project.slug} />
                       <div className="postTitle">
                         <h2>
-                          <strong>{i + 1}</strong> React boilerplate setup
-                          instruction
+                          <strong>{i + 1}</strong> {project.title}
                         </h2>
-                        <span className="createTime">March 18, 2021</span>
+                        <span className="createTime">{project.createdAt}</span>
                       </div>
-                      <p>
-                        My experience and thoughts on 2020 web development
-                        technologies.
-                      </p>
+                      <p>{project.description}</p>
                     </div>
                   </CardBody>
                 </Card>
