@@ -3,6 +3,7 @@ const { projectValidator } = require("../validations/project");
 const auth = require("../middleware/auth");
 const Project = require("../models/project");
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 route.get("/", async (req, res) => {
   const projects = await Project.find().sort({ createdAt: 1 });
@@ -16,7 +17,7 @@ route.post("/", auth, async (req, res) => {
 
   const project = await Project({
     title: req.body.title,
-    slug: req.body.slug,
+    slug: slugify(req.body.slug, { remove: /[*+~.()'"!:@]/g }),
     description: req.body.description,
     markdown: req.body.markdown,
   });
