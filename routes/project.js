@@ -17,7 +17,7 @@ route.get("/:slug", async (req, res) => {
   if (!project) {
     return res
       .status(400)
-      .json({ message: "Project could not found", success: false });
+      .json({ message: "project could not found", success: false });
   }
   res
     .status(200)
