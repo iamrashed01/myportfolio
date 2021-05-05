@@ -22,7 +22,11 @@ const RecentPosts = ({ recentProjects }) => {
                         <h2>
                           <strong>{i + 1}</strong> {project.title}
                         </h2>
-                        <span className="createTime">{project.createdAt}</span>
+                        <span className="createTime">
+                          {new Date(project.createdAt).toLocaleDateString(
+                            "bn-BD"
+                          )}
+                        </span>
                       </div>
                       <p>{project.description}</p>
                     </div>
