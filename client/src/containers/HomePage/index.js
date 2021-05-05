@@ -10,7 +10,6 @@ const HomePage = () => {
     async () => await apiRequest(urls.GET_MY_INFO),
     {
       retry: 1,
-      refetchOnWindowFocus: false,
     }
   );
   const { data: projects } = useQuery(
@@ -18,7 +17,7 @@ const HomePage = () => {
     async () => await apiRequest(urls.GET_PROJECTS),
     {
       retry: 1,
-      refetchOnWindowFocus: false,
+      // refetchOnWindowFocus: false,
     }
   );
   const info = heroInfo?.data.data;
