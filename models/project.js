@@ -6,12 +6,14 @@ const Project = mongoose.model(
     {
       title: {
         type: String,
+        trim: true,
         required: true,
       },
       slug: {
         type: String,
         required: true,
-        uniq: true,
+        trim: true,
+        unique: true,
       },
       description: {
         type: String,

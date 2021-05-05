@@ -27,20 +27,24 @@ route.get("/:slug", async (req, res) => {
 route.post("/", auth, async (req, res) => {
   await projectValidator(req.body);
 
-  const project = await Project({
-    title: req.body.title,
-    slug: slugify(req.body.slug, { remove: /[*+~.()'"!:@]/g }),
-    description: req.body.description,
-    markdown: req.body.markdown,
-  });
+  try {
+    const project = await Project({
+      title: req.body.title,
+      slug: slugify(req.body.slug, { remove: /[*+~.()'"!:@]/g }),
+      description: req.body.description,
+      markdown: req.body.markdown,
+    });
 
-  project.save();
+    await project.save();
 
-  res.status(200).json({
-    data: project,
-    message: "successfully created project.",
-    success: true,
-  });
+    res.status(200).json({
+      data: project,
+      message: "successfully created project.",
+      success: true,
+    });
+  } catch (err) {
+    res.status(500).json({ errro: err.message });
+  }
 });
 
 route.put("/:id", auth, async (req, res) => {
@@ -65,9 +69,9 @@ route.put("/:id", auth, async (req, res) => {
   project.description = req.body.description;
   project.markdown = req.body.markdown;
 
-  project.save();
+  await project.save();
 
-  res.status(200).json({
+  return res.status(200).json({
     data: project,
     message: "successfully updated project.",
     success: true,
