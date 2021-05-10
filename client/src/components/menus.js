@@ -18,6 +18,9 @@ const Menus = () => {
         <li>
           <NavLink to="/blog">Blog</NavLink>
         </li>
+        <li>
+          <NavLink to="/admin">Admin</NavLink>
+        </li>
       </ul>
     </div>
   );

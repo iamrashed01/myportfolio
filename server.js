@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
     }
   }
   if (err._original) {
-    return res.status(403).json({ message: err.message });
+    return res.status(400).json({ message: err.message, success: false });
   } else if (err.message === "access denied") {
     return res.status(403).json({ message: err.message });
   } else {

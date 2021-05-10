@@ -4,17 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/master.scss";
 import App from "./containers/App/App";
 import reportWebVitals from "./reportWebVitals";
-import { QueryClient, QueryClientProvider } from "react-query";
-require("dotenv").config();
-
-// Create a client
-const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

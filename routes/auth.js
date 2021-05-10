@@ -51,7 +51,7 @@ route.post("/register", upload.single("image"), async (req, res) => {
 /**
  * @params /api/auth/login
  */
-route.get("/login", upload.none(), async (req, res) => {
+route.post("/login", upload.none(), async (req, res) => {
   await loginValidator(req.body);
 
   const user = await User.findOne({ email: req.body.email });
@@ -94,7 +94,7 @@ route.get("/login", upload.none(), async (req, res) => {
       email_verifcation_status: user.email_verifcation_status,
     },
     auth_token: token,
-    message: "User retrieved successfully",
+    message: "successfully log in",
     success: true,
   });
 });
@@ -127,6 +127,13 @@ route.get("/verify-email", auth, async (req, res) => {
   return res
     .status(200)
     .json({ message: "successfully verified email.", success: true });
+});
+
+/**
+ * @params /api/auth/auth-status
+ */
+route.get("/auth-status", auth, (req, res) => {
+  res.status(200).json({ status: "in", success: true });
 });
 
 module.exports = route;

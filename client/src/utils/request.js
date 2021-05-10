@@ -8,6 +8,10 @@ export function getAuthToken() {
     : cookie.get("auth_token");
 }
 
+export function resetAuthToken(token = "") {
+  cookie.set("auth_token", token);
+}
+
 export function apiRequest(url, params, query = null) {
   const headers = {
     Authorization: `Bearer ${getAuthToken()}`,
