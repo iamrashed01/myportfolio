@@ -6,6 +6,9 @@ const { registerValidator, loginValidator } = require("../validations/auth");
 const sendMail = require("../utils/sendMail");
 const auth = require("../middleware/auth");
 
+/**
+ * @params /api/auth/register
+ */
 route.post("/register", upload.single("image"), async (req, res) => {
   await registerValidator(req.body);
 
@@ -45,6 +48,9 @@ route.post("/register", upload.single("image"), async (req, res) => {
   });
 });
 
+/**
+ * @params /api/auth/login
+ */
 route.get("/login", upload.none(), async (req, res) => {
   await loginValidator(req.body);
 
@@ -93,6 +99,9 @@ route.get("/login", upload.none(), async (req, res) => {
   });
 });
 
+/**
+ * @params /api/auth/verify-email
+ */
 route.get("/verify-email", auth, async (req, res) => {
   const user = await User.findOne({ email: req.user.email });
   if (!user) {
