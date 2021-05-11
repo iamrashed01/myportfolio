@@ -1,0 +1,53 @@
+.adminWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  color: #fff;
+  .sidebar {
+    flex-basis: 280px;
+    background: #232323;
+    height: 100vh;
+    ul {
+      padding: 0;
+      height: 100%;
+      li {
+        padding: 0;
+        background: transparent;
+
+        &.end {
+          margin-top: auto;
+          text-align: center;
+          font-weight: 600;
+          a {
+            font-size: 13px;
+            text-transform: uppercase;
+            background: #444;
+          }
+        }
+        a {
+          display: block;
+          font-size: 15px;
+          color: #fff;
+          padding: 10px 15px;
+          font-weight: 500;
+          border-bottom: 1px solid #333;
+          transition: all 0.3s ease 0s;
+          text-decoration: none;
+          &:hover,
+          &.active {
+            background: #444;
+          }
+        }
+      }
+    }
+  }
+  main {
+    flex: 1;
+    background: #242627;
+    padding: 15px 50px;
+  }
+
+  .card {
+    background-color: #333030;
+    border: 1px solid rgb(63, 60, 60);
+  }
+}
