@@ -7,7 +7,11 @@ function PublicRoute({ component: Component, ...rest }) {
   const context = useContext(RootContext);
 
   if (context.auth && rest.path === "/login") {
-    redirect = "/admin";
+    if (rest.location.state) {
+      redirect = rest.location.state.from.pathname;
+    } else {
+      redirect = "/admin";
+    }
   }
   return (
     <Route

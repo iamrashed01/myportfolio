@@ -48,6 +48,7 @@ const LoginPage = (props) => {
             <FormGroup>
               <Label>Email</Label>
               <Input
+                type="email"
                 name="email"
                 onChange={changeHandler}
                 value={state.email}
@@ -57,6 +58,7 @@ const LoginPage = (props) => {
             <FormGroup>
               <Label>Password</Label>
               <Input
+                type="password"
                 name="password"
                 onChange={changeHandler}
                 value={state.password}
