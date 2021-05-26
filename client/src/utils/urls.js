@@ -20,5 +20,5 @@ export const GET_AUTH_STATUS = {
 };
 export const GET_DASHBAORD = {
   method: "GET",
-  relativeUrl: "admin/dashboard",
+  relativeUrl: "dashboard",
 };

@@ -20,7 +20,7 @@ app.use("/api/welcome", require("./routes/welcome"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/profile", require("./routes/user"));
 app.use("/api/project", require("./routes/project"));
-app.use("/api/admin", require("./routes/admin"));
+app.use("/api", require("./routes/admin"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
