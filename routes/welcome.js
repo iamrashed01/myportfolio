@@ -8,9 +8,9 @@ router.post("/", async (req, res) => {
   });
   try {
     await newVisitor.save();
-    return res.send("welcome");
+    return res.send("welcome" + ip);
   } catch (err) {
-    return res.send("welcome again");
+    return res.send("welcome again" + ip);
   }
 });
 
