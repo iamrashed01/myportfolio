@@ -4,6 +4,7 @@ require("express-async-errors");
 const morgan = require("morgan");
 require("dotenv").config();
 const fs = require("fs");
+const path = require('path');
 
 // create app
 const app = express();
