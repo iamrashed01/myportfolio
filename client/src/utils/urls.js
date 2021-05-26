@@ -1,3 +1,7 @@
+export const WELCOME_VISIT = {
+  method: "POST",
+  relativeUrl: "welcome",
+};
 export const LOGIN = {
   method: "POST",
   relativeUrl: "auth/login",
@@ -13,4 +17,8 @@ export const GET_PROJECTS = {
 export const GET_AUTH_STATUS = {
   method: "GET",
   relativeUrl: "auth/auth-status",
+};
+export const GET_DASHBAORD = {
+  method: "GET",
+  relativeUrl: "admin/dashboard",
 };

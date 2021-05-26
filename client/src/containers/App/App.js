@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { apiRequest, resetAuthToken } from "../../utils/request";
-import { GET_AUTH_STATUS } from "../../utils/urls";
+import { GET_AUTH_STATUS, WELCOME_VISIT } from "../../utils/urls";
 
 function App() {
   const [auth, setAuth] = useState(null);
@@ -22,6 +22,8 @@ function App() {
         resetAuthToken(null);
         setAuth(null);
       });
+
+    apiRequest(WELCOME_VISIT);
   }, []);
   return (
     <AootContext.Provider value={{ auth, setUser }} className="App">
