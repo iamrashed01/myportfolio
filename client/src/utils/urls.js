@@ -10,6 +10,10 @@ export const GET_MY_INFO = {
   method: "GET",
   relativeUrl: "profile",
 };
+export const UPDATE_MY_INFO = {
+  method: "PUT",
+  relativeUrl: "profile",
+};
 export const GET_PROJECTS = {
   method: "GET",
   relativeUrl: "project",

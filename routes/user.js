@@ -10,7 +10,11 @@ route.get("/", async (req, res) => {
   );
   res
     .status(200)
-    .json({ data: user, message: "user profile retrieved successfully" });
+    .json({
+      data: user,
+      message: "user profile retrieved successfully",
+      success: true,
+    });
 });
 
 route.put("/", auth, upload.single("image"), async (req, res) => {
@@ -23,7 +27,11 @@ route.put("/", auth, upload.single("image"), async (req, res) => {
   user.profession = req.body.profession;
   user.description = req.body.description;
   user.save();
-  res.status(200).json({ data: user, message: "profile updated successfully" });
+  res.status(200).json({
+    data: user,
+    message: "profile updated successfully",
+    success: true,
+  });
 });
 
 module.exports = route;
