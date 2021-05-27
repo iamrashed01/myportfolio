@@ -11,6 +11,9 @@ const Sidebar = () => {
         <ListGroupItem>
           <NavLink to="/user-info">User Info</NavLink>
         </ListGroupItem>
+        <ListGroupItem>
+          <NavLink to="/create-project">Create Project</NavLink>
+        </ListGroupItem>
         <ListGroupItem className="end">
           <NavLink exact to="/">
             Preview

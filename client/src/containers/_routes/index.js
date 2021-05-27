@@ -5,6 +5,7 @@ import PrivateRoute from "../_PrivateRoute";
 import Dashboard from "../admin/Dashboard";
 import UserInfo from "../admin/UserInfo";
 import LoginPage from "../LoginPage";
+import CreateProject from "../admin/CreateProject";
 
 const Routes = () => {
   return (
@@ -12,6 +13,7 @@ const Routes = () => {
       <Switch>
         <PrivateRoute path="/admin" component={Dashboard} />
         <PrivateRoute path="/user-info" component={UserInfo} />
+        <PrivateRoute path="/create-project" component={CreateProject} />
         <PublicRoute exact path="/" component={HomePage} />
         <PublicRoute path="/project" component={HomePage} />
         <PublicRoute path="/skill" component={HomePage} />

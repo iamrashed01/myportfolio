@@ -26,3 +26,7 @@ export const GET_DASHBAORD = {
   method: "GET",
   relativeUrl: "dashboard",
 };
+export const CREATE_PROJECT = {
+  method: "POST",
+  relativeUrl: "project",
+};

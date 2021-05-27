@@ -1,9 +1,12 @@
 .adminWrapper {
-  display: flex;
-  flex-wrap: nowrap;
+  padding-left: 280px;
   color: #fff;
   .sidebar {
-    flex-basis: 280px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 280px;
     background: #232323;
     height: 100vh;
     ul {
@@ -41,7 +44,7 @@
     }
   }
   main {
-    flex: 1;
+    min-height: 100vh;
     background: #242627;
     padding: 15px 50px;
   }
@@ -64,4 +67,12 @@
   .form-control::placeholder {
     color: rgb(179, 170, 170);
   }
+}
+
+.w-md-editor {
+  height: unset !important;
+}
+.w-md-editor-content {
+  height: calc(100vh - 200px)!important;
+  min-height: 500px!important;
 }
