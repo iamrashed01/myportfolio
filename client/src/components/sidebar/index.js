@@ -9,10 +9,13 @@ const Sidebar = () => {
           <NavLink to="/admin">Dashboard</NavLink>
         </ListGroupItem>
         <ListGroupItem>
-          <NavLink to="/user-info">User Info</NavLink>
+          <NavLink to="/admin/user-info">User Info</NavLink>
         </ListGroupItem>
         <ListGroupItem>
-          <NavLink to="/create-project">Create Project</NavLink>
+          <NavLink to="/admin/create-project">Create Project</NavLink>
+        </ListGroupItem>
+        <ListGroupItem>
+          <NavLink to="/admin/projects">Projects</NavLink>
         </ListGroupItem>
         <ListGroupItem className="end">
           <NavLink exact to="/">
