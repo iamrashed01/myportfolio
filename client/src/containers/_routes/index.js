@@ -8,6 +8,7 @@ import LoginPage from "../LoginPage";
 import CreateProject from "../admin/CreateProject";
 import Projects from "../admin/Projects";
 import EditProject from "../admin/EditProject";
+import ProjectDetails from "../ProjectDetails";
 
 const Routes = () => {
   return (
@@ -27,10 +28,11 @@ const Routes = () => {
           component={EditProject}
         />
         <PublicRoute exact path="/" component={HomePage} />
-        <PublicRoute path="/project" component={HomePage} />
-        <PublicRoute path="/skill" component={HomePage} />
-        <PublicRoute path="/skill" component={HomePage} />
-        <PublicRoute path="/login" component={LoginPage} />
+        <PublicRoute exact path="/project" component={HomePage} />
+        <PublicRoute exact path="/project/:slug" component={ProjectDetails} />
+        <PublicRoute exact path="/skill" component={HomePage} />
+        <PublicRoute exact path="/skill" component={HomePage} />
+        <PublicRoute exact path="/login" component={LoginPage} />
         <Route exact component={() => "page not found"} />
       </Switch>
     </Router>

@@ -17,15 +17,13 @@ const RecentPosts = ({ recentProjects }) => {
                 <Card className="full-h">
                   <CardBody>
                     <div className="recetPost">
-                      <Link to={project.slug} />
+                      <Link to={`/project/${project.slug}`} />
                       <div className="postTitle">
                         <h2>
                           <strong>{i + 1}</strong> {project.title}
                         </h2>
                         <span className="createTime">
-                          {new Date(project.createdAt).toLocaleDateString(
-                            "bn-BD"
-                          )}
+                          {new Date(project.createdAt).toDateString()}
                         </span>
                       </div>
                       <p>{project.description}</p>

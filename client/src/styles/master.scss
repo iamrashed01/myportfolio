@@ -314,3 +314,13 @@ img {
   width: 600px;
   margin: auto;
 }
+
+// projectDetails
+#header {
+  position: relative;
+  margin-bottom: 60px;
+  min-height: 1px;
+  .menusArea {
+    top: 0;
+  }
+}
