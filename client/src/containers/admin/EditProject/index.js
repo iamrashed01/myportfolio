@@ -1,18 +1,39 @@
 import MDEditor from "@uiw/react-md-editor";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, FormGroup, Input, Label, Row, Button } from "reactstrap";
 import { apiRequest } from "../../../utils/request";
-import { CREATE_PROJECT } from "../../../utils/urls";
+import { GET_SINGLE_PROJECTS, UPDATE_PROJECT } from "../../../utils/urls";
 import { toast } from "react-toastify";
 
 const CreateProject = (props) => {
   const [markdown, setMarkdown] = useState("");
 
   const [values, setState] = useState({
+    id: "",
     title: "",
     slug: "",
     description: "",
   });
+
+  useEffect(() => {
+    apiRequest(GET_SINGLE_PROJECTS, null, props.match.params.slug)
+      .then((res) => {
+        if (res.data.success) {
+          setState({
+            id: res.data.data._id,
+            title: res.data.data.title,
+            slug: res.data.data.slug,
+            description: res.data.data.description,
+          });
+          setMarkdown(res.data.data.markdown);
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  }, [props]);
 
   const changeHandler = ({ target: { value, name } }) => {
     setState({
@@ -29,16 +50,10 @@ const CreateProject = (props) => {
       markdown,
     };
 
-    apiRequest(CREATE_PROJECT, formData)
+    apiRequest(UPDATE_PROJECT, formData, values.id)
       .then((res) => {
         if (res.data.success) {
           toast.success(res.data.message);
-          setState({
-            title: "",
-            slug: "",
-            description: "",
-          });
-          setMarkdown("");
           props.history.push("/admin/projects");
         } else {
           toast.error(res.data.message);
@@ -89,7 +104,7 @@ const CreateProject = (props) => {
       </Row>
       <MDEditor value={markdown} onChange={setMarkdown} />
       <Button className="mt-4" color="success" onClick={submitHandler}>
-        Add Project
+        Update
       </Button>
     </div>
   );

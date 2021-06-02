@@ -6,10 +6,12 @@ const mongoose = require("mongoose");
 const slugify = require("slugify");
 
 route.get("/", async (req, res) => {
-  const projects = await Project.find().sort({ createdAt: 1 });
-  res
-    .status(200)
-    .json({ data: projects, message: "successfully retrieved projects" });
+  const projects = await Project.find().sort({ createdAt: -1 });
+  res.status(200).json({
+    data: projects,
+    message: "successfully retrieved projects",
+    success: true,
+  });
 });
 
 route.get("/:slug", async (req, res) => {
@@ -21,7 +23,11 @@ route.get("/:slug", async (req, res) => {
   }
   res
     .status(200)
-    .json({ data: project, message: "successfully retrieved project details" });
+    .json({
+      data: project,
+      message: "successfully retrieved project details",
+      success: true,
+    });
 });
 
 route.post("/", auth, async (req, res) => {
@@ -30,7 +36,7 @@ route.post("/", auth, async (req, res) => {
   try {
     const project = await Project({
       title: req.body.title,
-      slug: slugify(req.body.slug, { remove: /[*+~.()'"!:@]/g }),
+      slug: slugify(req.body.slug).toLowerCase(),
       description: req.body.description,
       markdown: req.body.markdown,
     });
@@ -65,7 +71,7 @@ route.put("/:id", auth, async (req, res) => {
   await projectValidator(req.body);
 
   project.title = req.body.title;
-  project.slug = req.body.slug;
+  project.slug = slugify(req.body.slug).toLowerCase();
   project.description = req.body.description;
   project.markdown = req.body.markdown;
 
@@ -89,7 +95,7 @@ route.delete("/:id", auth, async (req, res) => {
 
   const project = await Project.findByIdAndDelete(req.params.id);
 
-  return res.status(400).json({
+  return res.status(200).json({
     data: project,
     message: "project deleted successfully",
     success: true,

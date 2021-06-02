@@ -7,6 +7,7 @@ import UserInfo from "../admin/UserInfo";
 import LoginPage from "../LoginPage";
 import CreateProject from "../admin/CreateProject";
 import Projects from "../admin/Projects";
+import EditProject from "../admin/EditProject";
 
 const Routes = () => {
   return (
@@ -20,6 +21,11 @@ const Routes = () => {
           component={CreateProject}
         />
         <PrivateRoute exact path="/admin/projects" component={Projects} />
+        <PrivateRoute
+          exact
+          path="/admin/edit-project/:slug"
+          component={EditProject}
+        />
         <PublicRoute exact path="/" component={HomePage} />
         <PublicRoute path="/project" component={HomePage} />
         <PublicRoute path="/skill" component={HomePage} />

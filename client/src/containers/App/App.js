@@ -28,7 +28,7 @@ function App() {
   return (
     <AootContext.Provider value={{ auth, setUser }} className="App">
       <Routes />
-      <ToastContainer />
+      <ToastContainer position="top-center" />
     </AootContext.Provider>
   );
 }
