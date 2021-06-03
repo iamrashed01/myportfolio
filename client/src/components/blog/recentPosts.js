@@ -7,7 +7,7 @@ const RecentPosts = ({ recentProjects }) => {
       <Row>
         <Col xs="12">
           <div className="sectionTitle text-center">
-            <h2>Recept Post</h2>
+            <h2>Recept Project</h2>
           </div>
         </Col>
         <Col xs="12" sm={{ size: 8, offset: 2 }}>
