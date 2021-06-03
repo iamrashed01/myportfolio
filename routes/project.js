@@ -49,7 +49,7 @@ route.post("/", auth, async (req, res) => {
       success: true,
     });
   } catch (err) {
-    res.status(500).json({ errro: err.message });
+    res.status(500).json({ message : err.message, success: false });
   }
 });
 
