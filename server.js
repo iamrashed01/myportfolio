@@ -44,11 +44,11 @@ app.use((err, req, res, next) => {
   if (err._original) {
     return res.status(400).json({ message: err.message, success: false });
   } else if (err.message === "access denied") {
-    return res.status(403).json({ message: err.message });
+    return res.status(403).json({ message: err.message, success: false });
   } else {
     return res
       .status(500)
-      .json({ message: err.message || "Something went wrong!" });
+      .json({ message: err.message || "Something went wrong!", success: false });
   }
 });
 
