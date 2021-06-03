@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import RecentPosts from "../../components/blog/recentPosts";
+import ProjectLists from "../../components/ProjectLists";
 import HeroArea from "../../components/heroArea";
 import { apiRequest } from "../../utils/request";
 import * as urls from "../../utils/urls";
@@ -16,7 +17,7 @@ const HomePage = () => {
       .catch((err) => {
         console.log(err);
       });
-    apiRequest(urls.GET_PROJECTS)
+    apiRequest(urls.GET_RECENT_PROJECTS)
       .then((res) => {
         setProjects(res.data.data);
       })
@@ -28,7 +29,16 @@ const HomePage = () => {
   return (
     <div>
       <HeroArea heroInfo={heroInfo} />
-      <RecentPosts recentProjects={projects} />
+      <ProjectLists
+        title="Recent Project"
+        className="mb-2"
+        recentProjects={projects}
+      />
+      <div className="text-center mb-5">
+        <Link to="/project" className="btn btn-primary">
+          More Projects
+        </Link>
+      </div>
     </div>
   );
 };

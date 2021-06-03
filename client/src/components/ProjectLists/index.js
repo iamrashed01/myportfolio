@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 
-const RecentPosts = ({ recentProjects }) => {
+const ProjectLists = ({ recentProjects, className = "mb-5", title = "" }) => {
   return (
-    <Container className="mb-5">
+    <Container className={className}>
       <Row>
         <Col xs="12">
           <div className="sectionTitle text-center">
-            <h2>Recept Project</h2>
+            <h2>{title}</h2>
           </div>
         </Col>
         <Col xs="12" sm={{ size: 8, offset: 2 }}>
@@ -39,4 +39,4 @@ const RecentPosts = ({ recentProjects }) => {
   );
 };
 
-export default RecentPosts;
+export default ProjectLists;

@@ -5,8 +5,19 @@ const Project = require("../models/project");
 const mongoose = require("mongoose");
 const slugify = require("slugify");
 
+// all projects
 route.get("/", async (req, res) => {
   const projects = await Project.find().sort({ createdAt: -1 });
+  res.status(200).json({
+    data: projects,
+    message: "successfully retrieved projects",
+    success: true,
+  });
+});
+
+//recent projects
+route.get("/recent-projects", async (req, res) => {
+  const projects = await Project.find().sort({ createdAt: -1 }).limit(4);
   res.status(200).json({
     data: projects,
     message: "successfully retrieved projects",

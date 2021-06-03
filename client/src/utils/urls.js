@@ -26,6 +26,10 @@ export const GET_PROJECTS = {
   method: "GET",
   relativeUrl: "project",
 };
+export const GET_RECENT_PROJECTS = {
+  method: "GET",
+  relativeUrl: "project/recent-projects",
+};
 export const GET_SINGLE_PROJECTS = {
   method: "GET",
   relativeUrl: "project/",
