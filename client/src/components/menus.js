@@ -13,12 +13,6 @@ const Menus = () => {
           <NavLink to="/project">Project</NavLink>
         </li>
         <li>
-          <NavLink to="/skill">Skil</NavLink>
-        </li>
-        <li>
-          <NavLink to="/blog">Blog</NavLink>
-        </li>
-        <li>
           <NavLink to="/admin">Admin</NavLink>
         </li>
       </ul>
